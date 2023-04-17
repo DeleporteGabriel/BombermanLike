@@ -9,13 +9,16 @@ public class PlayerMovement : MonoBehaviour
     private KeyCode _left, _right, _up, _down, _spawnBomb;
     [SerializeField]
     private int _speed, _facing;
-    public int currentBomb, maxBomb;
+    public int currentBomb, maxBomb, bombPower;
     [SerializeField]
     private BombExplosion _prefabBomb;
     [SerializeField]
     private PlayerLife _myLife;
     [SerializeField]
     private TextMeshProUGUI _bombsUI;
+
+    [SerializeField]
+    private WallManager _myWalls;
 
     void Update()
     {
@@ -61,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
 
             var Bomb = Instantiate(_prefabBomb, transform.position + decalageBomb, Quaternion.identity);
             Bomb.monPlayer = gameObject.GetComponent<PlayerMovement>();
+            Bomb.explosionLenght = bombPower;
+            Bomb.myWalls = _myWalls;
             currentBomb += 1;
         }
     }

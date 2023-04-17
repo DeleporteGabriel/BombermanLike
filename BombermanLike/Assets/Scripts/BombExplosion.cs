@@ -9,6 +9,8 @@ public class BombExplosion : MonoBehaviour
     private GameObject _monExplosion;
     public int explosionLenght;
 
+    public WallManager myWalls;
+
     private float durability = 0;
     // Start is called before the first frame update
     void Start()
@@ -39,17 +41,62 @@ public class BombExplosion : MonoBehaviour
         //Activation de la bombe
         monPlayer.currentBomb = Mathf.Clamp(monPlayer.currentBomb - 1, 0, monPlayer.maxBomb);
 
+        var stopUp = false;
+        var stopDown = false;
+        var stopRight = false;
+        var stopLeft = false;
+
         Instantiate(_monExplosion, transform.position, Quaternion.identity);
         for (int i = 0; i < explosionLenght; i++)
         {
             //explosion vers la droite
-            Instantiate(_monExplosion, new Vector3(transform.position.x + (i + 1), transform.position.y, 0), Quaternion.identity);
+            if (stopRight == false)
+            {
+                Instantiate(_monExplosion, new Vector3(transform.position.x + (i + 1), transform.position.y, 0), Quaternion.identity);
+                foreach (Transform child in myWalls.transform)
+                {
+                    if (child.position.x == transform.position.x + (i + 1) && (child.position.y == transform.position.y))
+                    {
+                        stopRight = true;
+                    }
+                }
+            }
             //explosion vers la gauche
-            Instantiate(_monExplosion, new Vector3(transform.position.x - (i + 1), transform.position.y, 0), Quaternion.identity);
+            if (stopLeft == false)
+            {
+                Instantiate(_monExplosion, new Vector3(transform.position.x - (i + 1), transform.position.y, 0), Quaternion.identity);
+                foreach (Transform child in myWalls.transform)
+                {
+                    if (child.position.x == transform.position.x - (i + 1) && (child.position.y == transform.position.y))
+                    {
+                        stopLeft = true;
+                    }
+                }
+            }
             //explosion vers le bas
-            Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y + (i + 1), 0), Quaternion.identity);
+            if (stopDown == false)
+            {
+                Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y + (i + 1), 0), Quaternion.identity);
+                foreach (Transform child in myWalls.transform)
+                {
+                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y + (i + 1)))
+                    {
+                        stopDown = true;
+                    }
+                }
+            }
             //explosion vers le haut
-            Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y - (i + 1), 0), Quaternion.identity);
+            if (stopUp == false)
+            {
+                Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y - (i + 1), 0), Quaternion.identity);
+                foreach (Transform child in myWalls.transform)
+                {
+                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y - (i + 1)))
+                    {
+                        stopUp = true;
+                    }
+                }
+            }
         }
         Destroy(gameObject);
     }
