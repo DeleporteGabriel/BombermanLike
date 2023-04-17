@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public int currentBomb;
     [SerializeField]
     private BombExplosion _prefabBomb;
+    [SerializeField]
+    private PlayerLife _myLife;
 
     private Rigidbody2D rgbd;
 
@@ -45,8 +47,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        rgbd.velocity = Vector2.zero;
+        if (collision.gameObject.GetComponent<Explosion>() != null)
+        {
+            _myLife.currentLife -= 1;
+        }
     }
 }

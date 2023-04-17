@@ -7,20 +7,20 @@ public class WallManager : MonoBehaviour
     [SerializeField]
     private int _wallNumber;
     [SerializeField]
-    private GameObject _wallPrefab;
-    [SerializeField]
-    private Transform _rangeMin, _rangeMax;
+    private List<DestroyableWall> _mesWalls;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        _wallNumber = Mathf.Clamp(_wallNumber, 0, _mesWalls.Count);
+
         for (int i = 0; i < _wallNumber; i++)
         {
-            var tempX = Random.Range(_rangeMin.position.x, _rangeMax.position.x);
-            var tempY = Random.Range(_rangeMin.position.y, _rangeMax.position.y);
-            var monInstance = Instantiate(_wallPrefab, transform);
-
-            monInstance.transform.position = new Vector3(tempX, tempY, 0);
+            var myWall = Random.Range(0, _mesWalls.Count);
+            _mesWalls[myWall].gameObject.SetActive(true);
+            _mesWalls.Remove(_mesWalls[myWall]);
+           
         }
     }
 
