@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private KeyCode _left, _right, _up, _down;
+    private KeyCode _left, _right, _up, _down, _spawnBomb;
     [SerializeField]
-    private float _speed;
+    private int _speed, _maxBomb;
+    public int currentBomb;
+    [SerializeField]
+    private BombExplosion _prefabBomb;
 
     private Rigidbody2D rgbd;
 
@@ -32,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(_down))
         {
             transform.position += Vector3.down * _speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(_spawnBomb) && currentBomb < _maxBomb)
+        {
+            var Bomb = Instantiate(_prefabBomb, transform.position, Quaternion.identity);
+            Bomb.monPlayer = gameObject.GetComponent<PlayerMovement>();
+            currentBomb += 1;
         }
     }
 
