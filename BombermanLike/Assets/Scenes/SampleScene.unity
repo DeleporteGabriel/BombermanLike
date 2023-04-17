@@ -2224,6 +2224,7 @@ GameObject:
   - component: {fileID: 423790521}
   - component: {fileID: 423790522}
   - component: {fileID: 423790523}
+  - component: {fileID: 423790524}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -2248,8 +2249,8 @@ MonoBehaviour:
   _up: 273
   _down: 274
   _spawnBomb: 32
-  _speed: 3
   _facing: 0
+  speed: 3
   currentBomb: 0
   maxBomb: 3
   bombPower: 1
@@ -2394,6 +2395,22 @@ MonoBehaviour:
   _myWalls: {fileID: 844401}
   _myMovements: {fileID: 423790517}
   _prefabExplosion: {fileID: -2979433968992435048, guid: d45bf3e268ea8364fa36d8e4d9dafdec, type: 3}
+--- !u!114 &423790524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423790516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d625eac6433db3d46b7392e07e1d35d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMovement: {fileID: 423790517}
+  _havePowerUp: 1
+  _usePowerUp: 113
+  _mySplashZone: {fileID: 9220237965774598062, guid: de5d73c6d6314ac46afb26d4fb9d138d, type: 3}
 --- !u!1001 &460228302
 PrefabInstance:
   m_ObjectHideFlags: 0

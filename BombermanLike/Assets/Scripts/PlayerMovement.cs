@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private KeyCode _left, _right, _up, _down, _spawnBomb;
     [SerializeField]
-    private int _speed, _facing;
+    private int _facing;
+
+    public int speed;
+    public bool canSpawnBomb = true;
+
     public int currentBomb, maxBomb, bombPower;
     [SerializeField]
     private BombExplosion _prefabBomb;
@@ -26,27 +30,27 @@ public class PlayerMovement : MonoBehaviour
         //déplacement du personnages
         if (Input.GetKey(_left))
         {
-            transform.position += Vector3.left * _speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.deltaTime;
             _facing = 0;
         }
         if (Input.GetKey(_right))
         {
-            transform.position += Vector3.right * _speed * Time.deltaTime;
+            transform.position += Vector3.right * speed * Time.deltaTime;
             _facing = 1;
         }
         if (Input.GetKey(_up))
         {
-            transform.position += Vector3.up * _speed * Time.deltaTime;
+            transform.position += Vector3.up * speed * Time.deltaTime;
             _facing = 2;
         }
         if (Input.GetKey(_down))
         {
-            transform.position += Vector3.down * _speed * Time.deltaTime;
+            transform.position += Vector3.down * speed * Time.deltaTime;
             _facing = 3;
         }
 
         //Utilisation des bombes
-        if (Input.GetKeyDown(_spawnBomb) && currentBomb < maxBomb)
+        if (Input.GetKeyDown(_spawnBomb) && currentBomb < maxBomb && canSpawnBomb == true)
         {
             var decalageBomb = Vector3.zero;
 
