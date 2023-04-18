@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class DestroyableWall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private PowerUpGiver _prefabPowerUp;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Explosion>() != null)
         {
+            if (Random.Range(0, 6) < 1)
+            {
+                var powerUp = Instantiate(_prefabPowerUp);
+                powerUp.transform.position = transform.position;
+                powerUp.powerUpGiven = Random.Range(0, 2);
+            }
             Destroy(gameObject);
         }
     }

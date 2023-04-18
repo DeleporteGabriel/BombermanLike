@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPowerUpB : MonoBehaviour
 {
@@ -14,7 +13,15 @@ public class PlayerPowerUpB : MonoBehaviour
     [SerializeField]
     private SplashZone _mySplashZone;
 
+    [SerializeField]
+    private Image _myPowerUpImage;
 
+    private void Start()
+    {
+        var newColor = _myPowerUpImage.color;
+        newColor.a = 0.5f;
+        _myPowerUpImage.color = newColor;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +40,25 @@ public class PlayerPowerUpB : MonoBehaviour
 
             myMovement.speed = 0;
             myMovement.canSpawnBomb = false;
+
+            var newColor = _myPowerUpImage.color;
+            newColor.a = 0.5f;
+            _myPowerUpImage.color = newColor;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PowerUpGiver>() != null)
+        {
+            if (collision.GetComponent<PowerUpGiver>().powerUpGiven == 1)
+            {
+                _havePowerUp = true;
+                var newColor = _myPowerUpImage.color;
+                newColor.a = 1f;
+                _myPowerUpImage.color = newColor;
+            }
+            Destroy(collision.gameObject);
         }
     }
 }

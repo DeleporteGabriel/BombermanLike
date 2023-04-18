@@ -55,7 +55,7 @@ public class BombExplosion : MonoBehaviour
                 Instantiate(_monExplosion, new Vector3(transform.position.x + (i + 1), transform.position.y, 0), Quaternion.identity);
                 foreach (Transform child in myWalls.transform)
                 {
-                    if (child.position.x == transform.position.x + (i + 1) && (child.position.y == transform.position.y))
+                    if (child.position.x == transform.position.x + (i + 1) && (child.position.y == transform.position.y) && (child.CompareTag("isWall") == true))
                     {
                         stopRight = true;
                     }
@@ -67,7 +67,7 @@ public class BombExplosion : MonoBehaviour
                 Instantiate(_monExplosion, new Vector3(transform.position.x - (i + 1), transform.position.y, 0), Quaternion.identity);
                 foreach (Transform child in myWalls.transform)
                 {
-                    if (child.position.x == transform.position.x - (i + 1) && (child.position.y == transform.position.y))
+                    if (child.position.x == transform.position.x - (i + 1) && (child.position.y == transform.position.y) && (child.CompareTag("isWall") == true))
                     {
                         stopLeft = true;
                     }
@@ -79,7 +79,7 @@ public class BombExplosion : MonoBehaviour
                 Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y + (i + 1), 0), Quaternion.identity);
                 foreach (Transform child in myWalls.transform)
                 {
-                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y + (i + 1)))
+                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y + (i + 1)) && (child.CompareTag("isWall") == true))
                     {
                         stopDown = true;
                     }
@@ -91,7 +91,7 @@ public class BombExplosion : MonoBehaviour
                 Instantiate(_monExplosion, new Vector3(transform.position.x, transform.position.y - (i + 1), 0), Quaternion.identity);
                 foreach (Transform child in myWalls.transform)
                 {
-                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y - (i + 1)))
+                    if (child.position.x == transform.position.x && (child.position.y == transform.position.y - (i + 1)) && (child.CompareTag("isWall") == true))
                     {
                         stopUp = true;
                     }
