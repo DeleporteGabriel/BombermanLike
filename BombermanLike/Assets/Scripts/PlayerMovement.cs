@@ -5,8 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private KeyCode _left, _right, _up, _down, _spawnBomb;
+    public KeyCode left, right, up, down, spawnBomb;
     [SerializeField]
     private int _facing;
 
@@ -28,29 +27,29 @@ public class PlayerMovement : MonoBehaviour
     {
         _bombsUI.text = "Munitions : " + (maxBomb - currentBomb).ToString();
         //déplacement du personnages
-        if (Input.GetKey(_left))
+        if (Input.GetKey(left))
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
             _facing = 0;
         }
-        if (Input.GetKey(_right))
+        if (Input.GetKey(right))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
             _facing = 1;
         }
-        if (Input.GetKey(_up))
+        if (Input.GetKey(up))
         {
             transform.position += Vector3.up * speed * Time.deltaTime;
             _facing = 2;
         }
-        if (Input.GetKey(_down))
+        if (Input.GetKey(down))
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
             _facing = 3;
         }
 
         //Utilisation des bombes
-        if (Input.GetKeyDown(_spawnBomb) && currentBomb < maxBomb && canSpawnBomb == true)
+        if (Input.GetKeyDown(spawnBomb) && currentBomb < maxBomb && canSpawnBomb == true)
         {
             var decalageBomb = Vector3.zero;
 
