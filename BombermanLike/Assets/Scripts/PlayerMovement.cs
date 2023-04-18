@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public KeyCode left, right, up, down, spawnBomb;
     [SerializeField]
-    private int _facing;
+    private int _facing = 0;
 
     public int speed;
     public bool canSpawnBomb = true;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _bombsUI.text = "Munitions : " + (maxBomb - currentBomb).ToString();
+
         //déplacement du personnages
         if (Input.GetKey(left))
         {
@@ -48,20 +50,24 @@ public class PlayerMovement : MonoBehaviour
             _facing = 3;
         }
 
-        //Utilisation des bombes
+        //spawn bomb
         if (Input.GetKeyDown(spawnBomb) && currentBomb < maxBomb && canSpawnBomb == true)
         {
             var decalageBomb = Vector3.zero;
 
             switch (_facing)
             {
-                case 0: decalageBomb = new Vector3(-1, 0, 0);
+                case 0:
+                    decalageBomb = new Vector3(-1, 0, 0);
                     break;
-                case 1: decalageBomb = new Vector3(1, 0, 0);
+                case 1:
+                    decalageBomb = new Vector3(1, 0, 0);
                     break;
-                case 2: decalageBomb = new Vector3(0, 1, 0);
+                case 2:
+                    decalageBomb = new Vector3(0, 1, 0);
                     break;
-                case 3: decalageBomb = new Vector3(0, -1, 0);
+                case 3:
+                    decalageBomb = new Vector3(0, -1, 0);
                     break;
             }
 
