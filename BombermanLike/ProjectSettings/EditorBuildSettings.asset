@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneVictoire.unity
     guid: fb47602003e480742bd3d5892ebdc20d
+  - enabled: 1
+    path: Assets/Scenes/SceneRebind.unity
+    guid: 15e0a55ff05ce7a4cb9671bd8bf2a070
   m_configObjects: {}

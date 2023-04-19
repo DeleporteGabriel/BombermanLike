@@ -78,6 +78,8 @@ public class MenuManager : MonoBehaviour
                     break;
                 case 1: SceneManager.LoadScene("SceneMulti");
                     break;
+                case 2: SceneManager.LoadScene("SceneRebind");
+                    break;
             }
         }
     }
@@ -136,6 +138,9 @@ public class MenuManager : MonoBehaviour
                 break;
             case 1:
                 SceneManager.LoadScene("SceneMulti");
+                break;
+            case 2:
+                SceneManager.LoadScene("SceneRebind");
                 break;
         }
     }

@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EmptyKey",
+                    "type": "Button",
+                    "id": "c147290d-637a-4e19-81b7-67e2718b17e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -252,6 +261,96 @@
                     "processors": "",
                     "groups": "Controller2",
                     "action": "GoRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b461c97b-7ff4-4f7b-bc7a-ec4432ec85d5",
+                    "path": "<XInputController>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "EmptyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "389c1f5b-4eed-4d24-b1b3-d01199a4614f",
+                    "path": "<XInputController>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller2",
+                    "action": "EmptyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MenuNavigation",
+            "id": "339ec928-30e0-4a78-9111-c80267845cbe",
+            "actions": [
+                {
+                    "name": "Validate",
+                    "type": "Button",
+                    "id": "cd732f84-eb33-4d7e-9137-bf3dbee3fd0d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoDown",
+                    "type": "Button",
+                    "id": "45bbcda8-2b8c-45d6-8b3f-dd1f24dd2c32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoUp",
+                    "type": "Button",
+                    "id": "9b6a2dff-85ca-48e5-83ae-b93b2ddc66a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "382c7dc3-acce-4b60-b3f0-1fd494959f76",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "Validate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38b52d62-ead1-4061-9a44-3b4a5f420625",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "GoDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a0c1b39-2da6-4552-a8ce-c9d744753181",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1",
+                    "action": "GoUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
