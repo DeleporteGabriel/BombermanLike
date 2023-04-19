@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode left, right, up, down, spawnBomb;
     [SerializeField]
     private int _facing = 0;
+    private Vector2 _movement;
 
     public int speed;
     public bool canSpawnBomb = true;
@@ -50,6 +51,13 @@ public class PlayerMovement : MonoBehaviour
             _facing = 3;
         }
 
+        GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + _movement * speed * Time.deltaTime);
+        //facing avec manette
+        if (_movement.x < -0.5f) { _facing = 0; }
+        if (_movement.x > 0.5f) { _facing = 1; }
+        if (_movement.y > 0.5f) { _facing = 2; }
+        if (_movement.y < -0.5f) { _facing = 3; }
+
         //spawn bomb
         if (Input.GetKeyDown(spawnBomb) && currentBomb < maxBomb && canSpawnBomb == true)
         {
@@ -86,5 +94,44 @@ public class PlayerMovement : MonoBehaviour
         {
             _myLife.playerHit();
         }
+    }
+
+    //Controles Manette
+
+    public void SpawningBomb(InputAction.CallbackContext context)
+    {
+        //spawn bomb
+        if (currentBomb < maxBomb && canSpawnBomb == true && context.action.triggered)
+        {
+            var decalageBomb = Vector3.zero;
+
+            switch (_facing)
+            {
+                case 0:
+                    decalageBomb = new Vector3(-1, 0, 0);
+                    break;
+                case 1:
+                    decalageBomb = new Vector3(1, 0, 0);
+                    break;
+                case 2:
+                    decalageBomb = new Vector3(0, 1, 0);
+                    break;
+                case 3:
+                    decalageBomb = new Vector3(0, -1, 0);
+                    break;
+            }
+
+            var Bomb = Instantiate(_prefabBomb, transform.position + decalageBomb, Quaternion.identity);
+            Bomb.monPlayer = gameObject.GetComponent<PlayerMovement>();
+            Bomb.explosionLenght = bombPower;
+            Bomb.myWalls = _myWalls;
+            currentBomb += 1;
+        }
+    }
+
+    //Mouvements
+    public void GoDirection(InputAction.CallbackContext context) 
+    {
+        _movement = context.ReadValue<Vector2>();
     }
 }

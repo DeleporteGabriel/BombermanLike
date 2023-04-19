@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerPowerUpB : MonoBehaviour
 {
@@ -37,6 +38,33 @@ public class PlayerPowerUpB : MonoBehaviour
             mySplash.up = myMovement.up;
             mySplash.down = myMovement.down;
             mySplash.use = myMovement.spawnBomb;
+
+            myMovement.speed = 0;
+            myMovement.canSpawnBomb = false;
+
+            var newColor = _myPowerUpImage.color;
+            newColor.a = 0.5f;
+            _myPowerUpImage.color = newColor;
+        }
+    }
+
+    public void TriggerPowerUp(InputAction.CallbackContext context)
+    {
+        if (_havePowerUp == true)
+        {
+            _havePowerUp = false;
+            var mySplash = Instantiate(_mySplashZone, new Vector3(0.5f, 0.5f, -5), Quaternion.identity);
+            mySplash.myPlayer = gameObject.GetComponent<PlayerPowerUpB>();
+            mySplash.GetComponent<PlayerInput>().SwitchCurrentControlScheme(context.control.device);
+
+            //mettre controles sur le splash
+            mySplash.left = myMovement.left;
+            mySplash.right = myMovement.right;
+            mySplash.up = myMovement.up;
+            mySplash.down = myMovement.down;
+            mySplash.use = myMovement.spawnBomb;
+            
+
 
             myMovement.speed = 0;
             myMovement.canSpawnBomb = false;
