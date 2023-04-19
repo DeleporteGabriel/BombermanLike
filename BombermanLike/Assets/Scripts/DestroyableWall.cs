@@ -25,7 +25,14 @@ public class DestroyableWall : MonoBehaviour
             {
                 var powerUp = Instantiate(_prefabPowerUp);
                 powerUp.transform.position = transform.position;
-                powerUp.powerUpGiven = Random.Range(0, 2);
+                if (Random.Range(0, 4) < 1)
+                {
+                    powerUp.powerUpGiven = 1;
+                }
+                else
+                {
+                    powerUp.powerUpGiven = 0;
+                }
             }
             Destroy(gameObject);
         }
