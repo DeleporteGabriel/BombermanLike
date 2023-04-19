@@ -31,6 +31,11 @@ public class PlayerLife : MonoBehaviour
             Invoke("stopBeingHit", 2);
             invincibility = true;
 
+            if (currentLife <= 0)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, 1);
+            }
+
             _myAnimator.ResetTrigger("HurtTrigger");
             _myAnimator.SetTrigger("HurtTrigger");
         }

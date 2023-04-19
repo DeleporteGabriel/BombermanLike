@@ -190,6 +190,8 @@ MonoBehaviour:
   _myMovements: {fileID: 1593858021383630923}
   _prefabExplosion: {fileID: -2979433968992435048, guid: d45bf3e268ea8364fa36d8e4d9dafdec, type: 3}
   _myPowerUpImage: {fileID: 0}
+  _prefabEffect: {fileID: 7817418581838992387, guid: 3085f88b9a33f454a96e78e9f43efaf0, type: 3}
+  _myPrefabPowerUp: {fileID: 2475193747803424899, guid: dbb5411b296ce864eb33f82cd30929b0, type: 3}
 --- !u!114 &1593858021383630914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +318,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8e56a5f2-520c-4de3-9d24-14b89150a747
     m_ActionName: Gameplay/PowerUp2[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58aa799b-0832-472d-8c5a-8389d3364645
+    m_ActionName: Gameplay/GoUp[/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0284d79c-7691-4974-9ca7-a845c61174bd
+    m_ActionName: Gameplay/GoDown[/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6d4ad07-3c12-4863-8073-139c99b86a4d
+    m_ActionName: Gameplay/GoLeft[/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb9408e8-e4fe-4ecb-8c50-63abfdbb407b
+    m_ActionName: Gameplay/GoRight[/XInputControllerWindows/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller1
   m_DefaultActionMap: Gameplay

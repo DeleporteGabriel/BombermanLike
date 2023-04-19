@@ -5,8 +5,7 @@ using UnityEngine;
 public class PowerUpGiver : MonoBehaviour
 {
     public int powerUpGiven;
-    [SerializeField]
-    private List<Color> myColors;
+    public List<Color> myColors;
 
     private void Start()
     {

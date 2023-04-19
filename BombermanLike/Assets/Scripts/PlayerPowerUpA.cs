@@ -18,6 +18,8 @@ public class PlayerPowerUpA : MonoBehaviour
     private Explosion _prefabExplosion;
     [SerializeField]
     private Image _myPowerUpImage;
+    [SerializeField]
+    private GameObject _prefabEffect, _myPrefabPowerUp;
 
     private void Start()
     {
@@ -47,6 +49,9 @@ public class PlayerPowerUpA : MonoBehaviour
             var newColor = _myPowerUpImage.color;
             newColor.a = 0.5f;
             _myPowerUpImage.color = newColor;
+
+            var myBonus = Instantiate(_myPrefabPowerUp);
+            myBonus.GetComponent<DiamoundObtained>().myPlayer = this;
         }
     }
 
@@ -61,6 +66,11 @@ public class PlayerPowerUpA : MonoBehaviour
                 newColor.a = 1f;
                 _myPowerUpImage.color = newColor;
             }
+
+            var gainedEffect = Instantiate(_prefabEffect);
+            gainedEffect.GetComponent<DiamoundObtained>().myPlayer = this;
+            gainedEffect.GetComponent<DiamoundObtained>().myDiamound.color = collision.GetComponent<PowerUpGiver>().myColors[collision.GetComponent<PowerUpGiver>().powerUpGiven];
+
             Destroy(collision.gameObject);
         }
     }
