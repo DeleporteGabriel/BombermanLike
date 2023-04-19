@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (score >= maxScore)
         {
-            SceneManager.LoadScene("SceneVictoire");
+            Invoke("GoToVictoryScreen", 1.5f);
         }
 
         _timerLeft -= Time.deltaTime;
@@ -38,5 +38,10 @@ public class ScoreManager : MonoBehaviour
         {
             SceneManager.LoadScene("SceneVictoire");
         }
+    }
+
+    private void GoToVictoryScreen()
+    {
+        SceneManager.LoadScene("SceneVictoire");
     }
 }
