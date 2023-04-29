@@ -37,6 +37,9 @@ public class PlayerPowerUpA : MonoBehaviour
             var newColor = _myPowerUpImage.color;
             newColor.a = 0.5f;
             _myPowerUpImage.color = newColor;
+
+            var myBonus = Instantiate(_myPrefabPowerUp);
+            myBonus.GetComponent<DiamoundObtained>().myPlayer = this;
         }
     }
 

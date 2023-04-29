@@ -30,29 +30,47 @@ public class PlayerMovement : MonoBehaviour
         _bombsUI.text = "Munitions : " + (maxBomb - currentBomb).ToString();
 
         //déplacement du personnages
-        if (Input.GetKey(left))
+        //quand on appuie sur la touche
+        if (Input.GetKeyDown(left))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-            _facing = 0;
+            _movement.x -= 1;
         }
-        if (Input.GetKey(right))
+        if (Input.GetKeyDown(right))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
-            _facing = 1;
+            _movement.x += 1;
         }
-        if (Input.GetKey(up))
+        if (Input.GetKeyDown(up))
         {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-            _facing = 2;
+            _movement.y += 1;
         }
-        if (Input.GetKey(down))
+        if (Input.GetKeyDown(down))
         {
-            transform.position += Vector3.down * speed * Time.deltaTime;
-            _facing = 3;
+            _movement.y -= 1;
         }
 
+        //quand on lache la touche
+        if (Input.GetKeyUp(left))
+        {
+            _movement.x += 1;
+        }
+        if (Input.GetKeyUp(right))
+        {
+            _movement.x -= 1;
+        }
+        if (Input.GetKeyUp(up))
+        {
+            _movement.y -= 1;
+        }
+        if (Input.GetKeyUp(down))
+        {
+            _movement.y += 1;
+        }
+
+        _movement.x = Mathf.Clamp(_movement.x, -1, 1);
+        _movement.y = Mathf.Clamp(_movement.y, -1, 1);
+
         GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position + _movement * speed * Time.deltaTime);
-        //facing avec manette
+        //facing dans la bonne direction
         if (_movement.x < -0.5f) { _facing = 0; }
         if (_movement.x > 0.5f) { _facing = 1; }
         if (_movement.y > 0.5f) { _facing = 2; }
